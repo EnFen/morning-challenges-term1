@@ -18,6 +18,7 @@
 #
 #    Think about writing some pseudo code first that steps 
 #    through all the commands you need to write. 
+<<<<<<< HEAD
 
 def pack(phone_dim_array)
     packing_volume = 1
@@ -58,3 +59,20 @@ puts "The most phones that can be packed into a box is #{optimal.max}."
 # end
 
 # puts max_phones
+=======
+#
+#    Keep it as simple as you can.
+
+phone = [5, 7.4, 4]
+box = [32, 43, 22.1]
+
+max_phones = 0
+phone.permutation do |orient|
+    print orient
+    puts
+    num_phones = (box[0] / orient[0]).to_i * (box[1] / orient[1]).to_i * (box[2] / orient[2]).to_i
+    max_phones = num_phones if num_phones > max_phones
+end
+
+puts max_phones
+>>>>>>> 11_vowels
