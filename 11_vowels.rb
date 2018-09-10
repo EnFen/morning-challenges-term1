@@ -1,3 +1,5 @@
+require 'test/unit'
+
 # Vowels
 #
 # Write a method that will take a string and
@@ -14,6 +16,35 @@
 # ruby tests/04_vowels_test.rb
 #
 
-def vowels (string)
-  # Your code here
+# def count_vowels(string)
+#   characters = string.chars
+#   vowels = ['a', 'e', 'i', 'o', 'u']
+#   included_vowels = []
+
+#   for character in characters do 
+#     if vowels.include?(character)
+#       included_vowels << character
+#     end
+#   end
+
+#   return included_vowels
+# end
+
+# Alternative
+
+def count_vowels(string)
+ return string.each_char.select { |character| character if ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].include?(character)}
+end
+
+print count_vowels("Are you having fun?")
+puts ""
+
+class LargestNumberTest < Test::Unit::TestCase
+  def test_vowels
+    assert_equal(["e","u","i","o","o"], count_vowels("The quick brown fox"))
+    assert_equal(["e","o","o"], count_vowels("Hello World"))
+  end
+  def test_vowels_casing
+    assert_equal(["A","e","E"], count_vowels("cAse tEst"))
+  end
 end
