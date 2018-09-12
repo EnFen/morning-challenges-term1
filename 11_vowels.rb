@@ -32,12 +32,13 @@ require 'test/unit'
 
 # Alternative
 
-def count_vowels(string)
- return string.each_char.select { |character| character if ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].include?(character)}
-end
+# def count_vowels(string)
+#  return string.each_char.select { |character| character if ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].include?(character)}
+# end
 
-print count_vowels("Are you having fun?")
-puts ""
+def count_vowels(string)
+  string.scan(/[aeiou]/i)
+end
 
 class LargestNumberTest < Test::Unit::TestCase
   def test_vowels

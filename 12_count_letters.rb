@@ -17,12 +17,16 @@
 def count_letters(string)
   result = {} # You'll need an empty hash to get started!
   
-  for letter in string.chars do
-    if result[letter]
-      result[letter] += 1
-    else
-      result[letter] = 1
-    end
+  # for letter in string.chars do
+  #   if result[letter]
+  #     result[letter] += 1
+  #   else
+  #     result[letter] = 1
+  #   end
+  # end
+
+  for char in string.chars do
+    result[char] = 1 + (result[char] || 0)
   end
 
   result # return the hash
