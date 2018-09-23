@@ -22,4 +22,19 @@
 
 class Dictionary
   # Your code here
+  def initialize
+    @word_list = {}
+  end
+
+  def add_word(word, definition)
+    @word_list[word] = definition
+  end
+
+  def total_words
+    return @word_list.size
+  end
+
+  def lookup(word)
+    return @word_list[word]
+  end
 end
