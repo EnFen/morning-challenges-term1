@@ -18,6 +18,7 @@
 # ruby tests/14_included_once_test.rb
 #
 
-def includedOnce (haystack, needle)
+def includedOnce(haystack, needle)
   # Your code here
+  haystack.count(needle) == 1
 end

@@ -11,7 +11,9 @@
 # Check your answers by running the tests:
 # ruby tests/16_page_title_test.rb
 #
+require "mechanize"
+
 
 def pageTitle(url)
-  # your code here
+  return Mechanize.new.get(url).title
 end
