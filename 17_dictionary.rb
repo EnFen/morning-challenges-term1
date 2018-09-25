@@ -21,6 +21,7 @@
 #
 
 class Dictionary
+<<<<<<< HEAD
   # Your code here
   def initialize
     @word_list = {}
@@ -36,5 +37,18 @@ class Dictionary
 
   def lookup(word)
     return @word_list[word]
+=======
+  def initialize
+    @words = {}      
+  end
+  def add_word(key, val)
+    @words[key] = val
+  end
+  def total_words
+    @words.length
+  end
+  def lookup(key)
+    @words[key]
+>>>>>>> b028df5d644e116007105a13b9522c8e1282f993
   end
 end

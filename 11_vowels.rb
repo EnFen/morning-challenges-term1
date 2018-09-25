@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 require 'test/unit'
 
+=======
+>>>>>>> b028df5d644e116007105a13b9522c8e1282f993
 # Vowels
 #
 # Write a method that will take a string and
@@ -16,6 +19,7 @@ require 'test/unit'
 # ruby tests/04_vowels_test.rb
 #
 
+<<<<<<< HEAD
 # def count_vowels(string)
 #   characters = string.chars
 #   vowels = ['a', 'e', 'i', 'o', 'u']
@@ -49,3 +53,8 @@ class LargestNumberTest < Test::Unit::TestCase
     assert_equal(["A","e","E"], count_vowels("cAse tEst"))
   end
 end
+=======
+def vowels (string)
+  string.scan(/[aeiou]/i)
+end
+>>>>>>> b028df5d644e116007105a13b9522c8e1282f993
