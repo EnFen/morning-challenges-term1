@@ -20,4 +20,3 @@ def define_suit(card)
   'spades'
  end
 end
-
