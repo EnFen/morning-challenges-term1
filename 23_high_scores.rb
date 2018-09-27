@@ -24,5 +24,28 @@
 # # And so on...
 
 class HighScoreTable
-  # your code here
+  def initialize(limit)
+    @limit = limit
+    @scores = []
+  end
+
+  def scores
+    @scores
+  end
+
+  def update(score)
+    @scores << score
+    @scores.sort!.reverse!
+    for entry in @scores do 
+      if @scores.length > @limit
+        @scores.delete_at(-1)
+      end
+    end
+    @scores
+  end
+
+  def reset()
+    @scores = []
+  end
+  
 end
