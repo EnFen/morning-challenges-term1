@@ -39,7 +39,7 @@ class Card
             card_name = @rank.to_s
         end
         
-        card_suit =@suit.to_s.capitalize
+        card_suit = @suit.to_s.capitalize
         
         "#{card_name} of #{card_suit}"
     end

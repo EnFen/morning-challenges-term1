@@ -20,6 +20,12 @@ require_relative '24_card_game'
 class Deck
   def initialize
     # Create a new array of cards
+    for rank in 1..13 do
+      Card.new(:hearts, rank)
+      Card.new(:diamonds, rank)
+      Card.new(:clubs, rank)
+      Card.new(:spades, rank)
+    end
   end
   
   def shuffle
