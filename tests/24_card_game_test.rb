@@ -30,6 +30,7 @@ class CardGame < Test::Unit::TestCase
         # You will need to make the Card class Comparable to make this work
         # Ref: https://docs.ruby-lang.org/en/2.5.0/Comparable.html
         assert_operator(@queen_of_spades, :>, @ten_of_clubs)
+        assert_operator(@ace_of_diamonds, :>, @ten_of_clubs)
     end
 end
 
