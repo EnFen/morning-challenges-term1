@@ -1,9 +1,9 @@
 class Card
     include Comparable
     def <=>(other)
-        if @rank == 1
-            ace_high_or_low
-        end
+        # if @rank == 1
+        #     ace_high_or_low
+        # end
         self.rank <=> other.rank
     end
 

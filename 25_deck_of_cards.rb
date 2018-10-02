@@ -18,25 +18,40 @@
 require_relative '24_card_game'
 
 class Deck
+  attr_reader :cards
+
   def initialize
     # Create a new array of cards
-    for rank in 1..13 do
-      Card.new(:hearts, rank)
-      Card.new(:diamonds, rank)
-      Card.new(:clubs, rank)
-      Card.new(:spades, rank)
+    @cards = []
+    # for rank in 1..13 do
+    #   @cards << Card.new(:hearts, rank)
+    #   @cards << Card.new(:diamonds, rank)
+    #   @cards << Card.new(:clubs, rank)
+    #   @cards << Card.new(:spades, rank)
+    # end
+    for suit in [:spades, :clubs, :diamonds, :hearts] do
+      13.times do |rank|
+        @cards << Card.new(suit, rank + 1)
     end
   end
   
   def shuffle
     # Shuffle the remaining cards
+    @cards.shuffle!
   end
 
   def draw(n=1)
     # Draw (remove) n cards from the deck. Return those cards
+    drawn_cards = []
+    n.times do 
+      drawn_cards << @cards.pop 
+    end
+    return drawn_cards
+        
   end
 
   def count
     # How many cards are left?
+    return @cards.length
   end
 end
