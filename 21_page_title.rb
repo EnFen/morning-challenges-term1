@@ -11,9 +11,19 @@
 # Check your answers by running the tests:
 # ruby tests/16_page_title_test.rb
 #
+<<<<<<< HEAD
 require "mechanize"
 
 
 def pageTitle(url)
   return Mechanize.new.get(url).title
+=======
+require 'nokogiri' # gem install nokogiri (if you don't have it installed)
+require 'open-uri'
+
+def pageTitle(url)
+  # Fetch and parse HTML document
+  doc = Nokogiri::HTML(open(url))
+  doc.search('title').children[0].text
+>>>>>>> d785f49315f21edd5329234273e9431f9c199eea
 end
