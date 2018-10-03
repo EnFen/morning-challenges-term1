@@ -16,13 +16,51 @@
 class CaesarCipher
   def initialize(shift)
     #your code here
+    @shift = shift
+    @alphabet = ('A'..'Z').to_a
   end
 
   def encode(string)
     #your code here
+    char_array = string.upcase.chars
+    encoded_array = []  
+
+    for char in char_array do
+      if !@alphabet.include?(char)
+        encoded_array << char
+        next
+      else
+        if @alphabet.index(char) + @shift > 25
+          shifted_index = @alphabet.index(char) + @shift - 26
+        else 
+          shifted_index = @alphabet.index(char) + @shift
+        end
+      end
+      encoded_array << @alphabet[shifted_index]
+    end
+
+    return encoded_array.join
   end
   
   def decode(string)
     #your code here
+    char_array = string.upcase.chars
+    decoded_array = []
+
+    for char in char_array do
+      if !@alphabet.include?(char)
+       decoded_array << char
+       next
+      else
+        if @alphabet.index(char) - @shift < 0
+          shifted_index = @alphabet.index(char) - @shift + 26
+        else
+          shifted_index = @alphabet.index(char) - @shift
+        end
+      end
+      edecoded_array << @alphabet[shifted_index]
+    end
+    
+    return decoded_array.join
   end
 end
