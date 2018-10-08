@@ -29,11 +29,89 @@
 #
 # The columns are numbered 0-6 left to right.
 
+require 'matrix'
+
+class Matrix
+  public :"[]=", :set_element, :set_component
+end
+
 class Connect4
   def initialize
     #your code here
+    @grid = Matrix[
+      [0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0] 
+    ]
+    @players = [1, 2]
+    @player = @players[1]
   end
+
   def play(column)
-    #your code here
-  end  
+    # CHANGE PLAYER
+    @player = @players[@players.index(@player) - 1]
+
+    #CHECK IF GAME FINISHED
+    if win_condition(@grid) == true
+      return "Game has finished!"
+    end
+
+    # MODIFY POSITION IN GRID & CHECK IF COLUMN FULL
+    # iterator
+    i = @grid.row_count - 1
+    if @grid[0, column] > 0
+        # all iterations completed; "Column full"
+        return "Column full!"
+    end
+    # for each position in grid column (from bottom);
+    for position in @grid.column(column).to_a.reverse do
+      if position > 0
+        # iterate, and move to next
+        i -= 1
+        next
+      elsif position == 0
+        # replace with player no; break
+        @grid[i, column] = @player
+        # puts @grid
+        break      
+      end      
+    end
+
+    # CHECK IF WIN CONDITION REACHED
+    if win_condition(@grid) == true
+      return "Player #{@player} wins!"
+    end
+
+    # IF NO COLUMN FULL OR WIN CONDITION, RETURN PLAYERS TURN
+    "Player #{@player} has a turn"
+  end
+
+  def win_condition(grid)
+    # check rows
+    for row in grid.row_vectors do
+      row.to_a.each_cons(4) {|four| return true if four == [1,1,1,1] || four == [2,2,2,2]}
+    end
+
+    # check columns
+    for column in grid.column_vectors do
+      column.to_a.each_cons(4) {|four| return true if four == [1,1,1,1] || four == [2,2,2,2]}
+    end
+
+    #check diagonals
+    
+  end
+
 end
+
+# @game = Connect4.new
+# @game.win_condition(Matrix[
+#       [0,0,0,0,0,0,0],
+#       [0,0,0,0,0,0,0],
+#       [0,0,0,0,0,0,0],
+#       [0,0,0,0,0,0,0],
+#       [0,0,0,0,0,0,0],
+#       [0,0,0,0,0,0,0] 
+#     ])
